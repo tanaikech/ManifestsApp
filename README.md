@@ -144,6 +144,11 @@ If you cannot see above scopes at **On script editor -> File -> Project properti
 }
 ~~~
 
+# Acknowledgements
+This application was featured by [mhawksey](https://github.com/mhawksey). Thank you so much.
+
+- The featured page is [here](https://mashe.hawksey.info/2017/11/everything-you-always-wanted-to-know-about-google-apps-script-manifest-files-but-were-afraid-to-ask/)
+
 
 <a name="Licence"></a>
 # Licence

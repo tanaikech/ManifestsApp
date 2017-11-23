@@ -478,7 +478,15 @@ function setGmail(resources) {
     };
 
     getSrc = function() {
-      return JSON.parse((this.getManifestsRaw(this.projectId)).source);
+      var e;
+      try {
+        return JSON.parse((this.getManifestsRaw(this.projectId)).source);
+      } catch (error) {
+        e = error;
+        if (~e.toString().indexOf("Unexpected token")) {
+          throw new Error("Cannot find Manifest file. Please show Manifest file at the project you want to access. (On the script editor, View -> Show manifest file)");
+        }
+      }
     };
 
     return ManifestsApp;

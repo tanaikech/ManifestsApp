@@ -25,6 +25,7 @@ And also, by recent update of Google, [Google Apps Script API](https://developer
 1g0_wywpigtU_xA01D5IrRuBuDD5unieYl7nVXQR8DM_An0eUnB0NcTcx
 ~~~
 
+<a name="HowToInstall"></a>
 # How to install
 1. [Install ManifestsApp library](https://developers.google.com/apps-script/guides/libraries).
     - Library's project key is **``1g0_wywpigtU_xA01D5IrRuBuDD5unieYl7nVXQR8DM_An0eUnB0NcTcx``**.
@@ -199,6 +200,8 @@ If you have any questions and commissions for me, feel free to tell me.
 
     - [ProjectApp2](https://github.com/tanaikech/ProjectApp2) is published, and got to be able to use both standalone script type and container-bound script type.
         - By this, this library also got to be able to be used for the both projects.
+    - For this update, please enable Apps Script API.
+        - Please check ["How to install"](#HowToInstall).
 
 
 [TOP](#TOP)

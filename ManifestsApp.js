@@ -197,14 +197,12 @@ function setGmail(resources) {
         throw new Error("No project ID.");
       }
       this.projectId = p_;
-      // ProjectApp is used as a library. "https://github.com/tanaikech/ProjectApp";
-      this.pa = ProjectApp.init();
       this.reference = "https://developers.google.com/apps-script/concepts/manifests";
     }
 
     ManifestsApp.prototype.getManifestsRaw = function() {
       var e, j, len, raw, rawManifects, ref;
-      raw = this.pa.getProjectRaw(this.projectId);
+      raw = ProjectApp2.getProjectRaw(this.projectId);
       rawManifects = {};
       ref = raw.files;
       for (j = 0, len = ref.length; j < len; j++) {
@@ -220,7 +218,7 @@ function setGmail(resources) {
       if (manifests_ == null) {
         throw new Error("No JSON manifests. Reference is " + this.reference);
       }
-      return this.pa.updateProjectByBlob(this.projectId, makeBlob.call(this, manifests_));
+      return ProjectApp2.updateProjectByBlob(this.projectId, makeBlob.call(this, manifests_));
     };
 
     ManifestsApp.prototype.getTimezone = function() {
@@ -236,7 +234,7 @@ function setGmail(resources) {
       }
       src = getSrc.call(this);
       src.timeZone = timeZone_;
-      return this.pa.updateProjectByBlob(this.projectId, makeBlob.call(this, src));
+      return ProjectApp2.updateProjectByBlob(this.projectId, makeBlob.call(this, src));
     };
 
     ManifestsApp.prototype.getOauthScopes = function() {
@@ -255,7 +253,7 @@ function setGmail(resources) {
       }
       src = getSrc.call(this);
       src.oauthScopes = oauthScopes_;
-      return this.pa.updateProjectByBlob(this.projectId, makeBlob.call(this, src));
+      return ProjectApp2.updateProjectByBlob(this.projectId, makeBlob.call(this, src));
     };
 
     ManifestsApp.prototype.getAdvancedServices = function() {
@@ -292,7 +290,7 @@ function setGmail(resources) {
         serviceId: serviceId_,
         version: version_
       });
-      return this.pa.updateProjectByBlob(this.projectId, makeBlob.call(this, src));
+      return ProjectApp2.updateProjectByBlob(this.projectId, makeBlob.call(this, src));
     };
 
     ManifestsApp.prototype.disableAdvancedService = function(serviceId_) {
@@ -321,7 +319,7 @@ function setGmail(resources) {
       } else {
         throw new Error("No enabled services.");
       }
-      return this.pa.updateProjectByBlob(this.projectId, makeBlob.call(this, src));
+      return ProjectApp2.updateProjectByBlob(this.projectId, makeBlob.call(this, src));
     };
 
     ManifestsApp.prototype.getLibraries = function() {
@@ -364,7 +362,7 @@ function setGmail(resources) {
         version: version_,
         developmentMode: developmentMode_
       });
-      return this.pa.updateProjectByBlob(this.projectId, makeBlob.call(this, src));
+      return ProjectApp2.updateProjectByBlob(this.projectId, makeBlob.call(this, src));
     };
 
     ManifestsApp.prototype.uninstallLibrary = function(userSymbol_) {
@@ -393,7 +391,7 @@ function setGmail(resources) {
       } else {
         throw new Error("No installed libraries.");
       }
-      return this.pa.updateProjectByBlob(this.projectId, makeBlob.call(this, src));
+      return ProjectApp2.updateProjectByBlob(this.projectId, makeBlob.call(this, src));
     };
 
     ManifestsApp.prototype.getExceptionLogging = function() {
@@ -409,7 +407,7 @@ function setGmail(resources) {
       }
       src = getSrc.call(this);
       src.exceptionLogging = value_;
-      return this.pa.updateProjectByBlob(this.projectId, makeBlob.call(this, src));
+      return ProjectApp2.updateProjectByBlob(this.projectId, makeBlob.call(this, src));
     };
 
     ManifestsApp.prototype.getWebapp = function() {
@@ -432,7 +430,7 @@ function setGmail(resources) {
       }
       src.webapp.access = access_;
       src.webapp.executeAs = executeAs_;
-      return this.pa.updateProjectByBlob(this.projectId, makeBlob.call(this, src));
+      return ProjectApp2.updateProjectByBlob(this.projectId, makeBlob.call(this, src));
     };
 
     ManifestsApp.prototype.getUrlFetchWhitelist = function() {
@@ -451,7 +449,7 @@ function setGmail(resources) {
       }
       src = getSrc.call(this);
       src.urlFetchWhitelist = urlFetchWhitelist_;
-      return this.pa.updateProjectByBlob(this.projectId, makeBlob.call(this, src));
+      return ProjectApp2.updateProjectByBlob(this.projectId, makeBlob.call(this, src));
     };
 
     ManifestsApp.prototype.getGmail = function() {
@@ -470,7 +468,7 @@ function setGmail(resources) {
       }
       src = getSrc.call(this);
       src.gmail = resources_;
-      return this.pa.updateProjectByBlob(this.projectId, makeBlob.call(this, src));
+      return ProjectApp2.updateProjectByBlob(this.projectId, makeBlob.call(this, src));
     };
 
     makeBlob = function(raw_) {

@@ -62,7 +62,7 @@ About the install of scopes used at this library, users are not required to inst
 
 -----
 
-
+<a name="Usage"></a>
 # Usage
 Methods that ManifestsApp has are as follows.
 
@@ -88,6 +88,8 @@ Methods that ManifestsApp has are as follows.
 | setUrlFetchWhitelist(urlFetchWhitelist) | Object | Set UrlFetchWhitelist with overwrite. |
 | getGmail() | Object | Retrieve Gmail. |
 | setGmail(resources) | Object | Set Gmail with overwrite. |
+| getSheets() | Object | Retrieve Sheets. |
+| setSheets(resources) | Object | Set Sheets with overwrite. [Ref.](https://developers.google.com/apps-script/guides/sheets/macros#manifest_structure_for_macros) |
 
 You can also see the documents at the following URL.
 
@@ -103,14 +105,14 @@ When you want to retrieve Manifests as raw data (JSON), you can use scripts like
 ~~~javascript
 var ma = ManifestsApp.setProjectId(projectId); // Retrieve the instance
 var r = ma.getManifestsRaw();
-Logger.log(r)
+Logger.log(r);
 ~~~
 
 or
 
 ~~~javascript
 var r = ManifestsApp.setProjectId(projectId).getManifestsRaw();
-Logger.log(r)
+Logger.log(r);
 ~~~
 
 # Library used at ManifestsApp
@@ -202,6 +204,14 @@ If you have any questions and commissions for me, feel free to tell me.
         - By this, this library also got to be able to be used for the both projects.
     - For this update, please enable Apps Script API.
         - Please check ["How to install"](#HowToInstall).
+
+* v1.0.3 (July 11, 2018)
+
+    - By Google's update, ["sheets" was added to manifests](https://developers.google.com/apps-script/guides/sheets/macros#manifest_structure_for_macros) for installing the configuration of Macro. By this, this library was updated.
+        - You can see the added methods (getSheets(), setSheets()) at [Usage](#Usage).
+        - If you set "sheets", please put the value of "sheets" as the resource like below sample.
+            - ``{"macros": [{"menuName": "QuickRowSum", "functionName": "calculateRowSum"}]}``
+            - Don't put ``{"sheets": {"macros": [{"menuName": "QuickRowSum", "functionName": "calculateRowSum"}]}}``
 
 
 [TOP](#TOP)

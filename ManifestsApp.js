@@ -184,6 +184,23 @@ function getGmail() {
 function setGmail(resources) {
     return new ManifestsApp(this.projectId).setGmail(resources);
 }
+
+/**
+ * Retrieve Sheets.<br>
+ * @return {Object} Return Sheets as JSON.
+ */
+function getSheets() {
+    return new ManifestsApp(this.projectId).getSheets();
+}
+
+/**
+ * Set Sheets.<br>
+ * @param {Object} resources resources which is JSON.
+ * @return {Object} Return project information.
+ */
+function setSheets(resources) {
+    return new ManifestsApp(this.projectId).setSheets(resources);
+}
 ;
 (function(r) {
   var ManifestsApp;
@@ -468,6 +485,25 @@ function setGmail(resources) {
       }
       src = getSrc.call(this);
       src.gmail = resources_;
+      return ProjectApp2.updateProjectByBlob(this.projectId, makeBlob.call(this, src));
+    };
+
+    ManifestsApp.prototype.getSheets = function() {
+      var src;
+      src = getSrc.call(this);
+      return src.sheets;
+    };
+
+    ManifestsApp.prototype.setSheets = function(resources_) {
+      var src;
+      if (resources_ == null) {
+        throw new Error("No resources. Reference is " + this.reference);
+      }
+      if (typeof resources_ !== "object") {
+        throw new Error("'resources' has to be a nested object. Reference is " + this.reference);
+      }
+      src = getSrc.call(this);
+      src.sheets = resources_;
       return ProjectApp2.updateProjectByBlob(this.projectId, makeBlob.call(this, src));
     };
 

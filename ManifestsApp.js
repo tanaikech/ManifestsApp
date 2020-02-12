@@ -201,6 +201,23 @@ function getSheets() {
 function setSheets(resources) {
     return new ManifestsApp(this.projectId).setSheets(resources);
 }
+
+/**
+ * Retrieve Runtime version.<br>
+ * @return {Object} Return Runtime version as string.
+ */
+function getRuntimeVersion() {
+    return new ManifestsApp(this.projectId).getRuntimeVersion();
+}
+
+/**
+ * Set Runtime version.<br>
+ * @param {String} value value which is string like 'STABLE', 'V8', 'DEPRECATED_ES5'.
+ * @return {Object} Return project information.
+ */
+function setRuntimeVersion(value) {
+    return new ManifestsApp(this.projectId).setRuntimeVersion(value);
+}
 ;
 (function(r) {
   var ManifestsApp;
@@ -504,6 +521,26 @@ function setSheets(resources) {
       }
       src = getSrc.call(this);
       src.sheets = resources_;
+      return ProjectApp2.updateProjectByBlob(this.projectId, makeBlob.call(this, src));
+    };
+
+    ManifestsApp.prototype.getRuntimeVersion = function() {
+      var src;
+      src = getSrc.call(this);
+      return src.runtimeVersion;
+    };
+
+    ManifestsApp.prototype.setRuntimeVersion = function(resources_) {
+      var src;
+      if (resources_ == null) {
+        throw new Error("No resources. Reference is " + this.reference);
+      }
+      if (typeof resources_ !== "string") {
+        throw new Error("'resources' has to be a string like 'STABLE', 'V8', 'DEPRECATED_ES5'. Reference is " + this.reference);
+      }
+      src = getSrc.call(this);
+      resources_ = resources_.toUpperCase();
+      src.runtimeVersion = resources_;
       return ProjectApp2.updateProjectByBlob(this.projectId, makeBlob.call(this, src));
     };
 

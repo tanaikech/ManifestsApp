@@ -1,0 +1,12 @@
+{
+  "timeZone": "Asia/Tokyo",
+  "dependencies": {
+    "libraries": [{
+      "userSymbol": "ProjectApp2",
+      "libraryId": "11qqgrTfCEydqwIF8RRrSZOrdq-KNsIDnUpnYefX5KobaMMArVSlXUqwS",
+      "version": "1",
+      "developmentMode": true
+    }]
+  },
+  "exceptionLogging": "STACKDRIVER"
+}
